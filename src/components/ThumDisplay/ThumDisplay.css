@@ -1,0 +1,21 @@
+.areatd{
+    width: 168px;
+    padding: 15px;
+}
+.innerareatd {
+    width: 82.32px;
+    padding: 58.68px 82.32px;
+    background-color: #F8F4E8;
+    border-radius: 25px;
+    border: 2px solid #000;
+    cursor: pointer;
+    transition: box-shadow 200ms ease, transform 200ms ease;
+
+
+}
+
+
+.innerareatd:hover {
+    box-shadow: 4px 4px;
+    transform: translate(-4px, -4px);
+}
