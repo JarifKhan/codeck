@@ -1,21 +1,116 @@
-.areatd{
-    width: 168px;
-    padding: 15px;
+.areatd {
+  width: 100%;
+  padding: 4px 0;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
 }
+
 .innerareatd {
-    width: 82.32px;
-    padding: 58.68px 82.32px;
-    background-color: #F8F4E8;
-    border-radius: 25px;
-    border: 2px solid #000;
-    cursor: pointer;
-    transition: box-shadow 200ms ease, transform 200ms ease;
-
-
+  width: 150px;
+  height: 105px;
+  background-color: #F8F4E8;
+  border-radius: 10px;
+  border: 2px solid #000;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 150ms ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
 }
-
 
 .innerareatd:hover {
-    box-shadow: 4px 4px;
-    transform: translate(-4px, -4px);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.innerareatd.active {
+  background-color: #ffffff;
+  border: 2.5px solid #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.innerareatd.active .thum-topbar {
+  background-color: #000000;
+  border-bottom: 1.5px solid #000000;
+}
+
+.innerareatd.active .thum-index-badge {
+  color: #ffffff;
+}
+
+.innerareatd.active .thum-title {
+  color: #ffffff;
+}
+
+.innerareatd.active .thum-delete-btn {
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+.innerareatd.active .thum-delete-btn:hover {
+  color: #ff5252;
+  opacity: 1;
+}
+
+.thum-topbar {
+  height: 22px;
+  background-color: #ebe7db;
+  border-bottom: 1.5px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+.thum-index-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: #000;
+}
+
+.thum-title {
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75px;
+}
+
+.thum-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 10px;
+  color: #c62828;
+  opacity: 0.6;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.thum-delete-btn:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.thum-preview {
+  flex: 1;
+  padding: 6px 8px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 8px;
+  line-height: 11px;
+  color: #555;
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #faf8f2;
+}
+
+.innerareatd.active .thum-preview {
+  background-color: #ffffff;
+  color: #222;
 }

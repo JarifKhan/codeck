@@ -1,22 +1,8 @@
-import ThumDisplay from "../ThumDisplay/ThumDisplay";
+import React from 'react';
 import ThumAddBtn from '../ThumAddBtn/ThumAddBtn';
 
-function AddThum(props) {
-
-    const addUserHandler = (event) =>{
-        event.preventDefault();
-        props.onAddThum();
-        
-    };
-
-
-    return(
-        <form onSubmit={addUserHandler}>
-            <ThumDisplay></ThumDisplay>
-            <ThumAddBtn type = "submit"></ThumAddBtn>
-            
-        </form>
-    );
-};
+function AddThum({ onAddThum }) {
+  return <ThumAddBtn onClick={onAddThum} />;
+}
 
 export default AddThum;

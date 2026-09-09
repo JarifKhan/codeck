@@ -1,39 +1,39 @@
-.areatdb{
-    width: 168px;
-    padding: 15px;
+.areatdb {
+  width: 100%;
+  padding: 4px 0;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
 }
-
 
 .innerareatdb {
-    width: 82.32px;
-    padding: 58.68px 82.32px;
-    background-color: #F8F4E8;
-    border-radius: 25px;
-    border: 2px solid #000;
-    cursor: pointer;
-    transition: box-shadow 200ms ease, transform 200ms ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
+  width: 150px;
+  height: 48px;
+  background-color: #F8F4E8;
+  border-radius: 10px;
+  border: 2px dashed #000;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 150ms ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  font-family: inherit;
+  color: #000;
+  position: relative;
 }
-
 
 .innerareatdb:hover {
-    box-shadow: 4px 4px;
-    transform: translate(-4px, -4px);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000;
+  background-color: #ffffff;
+  border-style: solid;
 }
 
-.hline{
-    border: 2px solid #000;
-    width: 20px;
-    position: absolute;
-   
-}
-
-.vline{
-    border: 2px solid #000;
-    height: 20px;
-    position: absolute;
+.innerareatdb:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
 }

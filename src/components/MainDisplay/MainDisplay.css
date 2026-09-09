@@ -1,124 +1,360 @@
-
-.area{
-    width: 968px;
+.area {
+  width: 968px;
+  max-width: 95vw;
 }
+
 .innerarea {
-    width: 968px;
-    height: 690px;
-    background-color: #F8F4E8;
-    border-radius: 10px;
-    border: 2px solid #000;
-    z-index: -1;
-    cursor: pointer;
-    transition: box-shadow 200ms ease, transform 200ms ease;
-   
-
-
+  width: 100%;
+  height: 690px;
+  background-color: #F8F4E8;
+  border-radius: 12px;
+  border: 2.5px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 250ms ease;
 }
 
-
-.innerarea:hover {
-    box-shadow: 4px 4px;
-    transform: translate(-4px, -4px);
+.fullscreen-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
 }
 
-.lineContainer{
-    display: flex;
-    justify-content: center;
+.innerarea.maximized {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  width: calc(100vw - 36px);
+  height: calc(100vh - 36px);
+  z-index: 9999;
+  box-shadow: 10px 10px 0 #000;
 }
 
-.line {
-    height: 2px;
-    background-color: black;
-    width: 954px;
+.window-topbar {
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: #F8F4E8;
+  border-bottom: 2px solid #000;
+  user-select: none;
 }
 
-.btn{
-    height: 50px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 15px;
-    transition: box-shadow 200ms ease, transform 200ms ease;
+.window-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.btn button:hover{
-    box-shadow: 2px 2px;
-    transform: translate(-4px, -4px);
+.slide-badge {
+  background-color: #000;
+  color: #F8F4E8;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.slide-title-input {
+  border: 1.5px solid #000;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  outline: none;
+  min-width: 140px;
+}
+
+.slide-title-input:focus {
+  box-shadow: 1.5px 1.5px 0 #000;
+}
+
+.language-select {
+  border: 1.5px solid #000;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn button {
-    margin: 5px; 
-    padding: 10px;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    border: 1px solid black;
-    transition: box-shadow 200ms ease, transform 200ms ease;
-    
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  padding: 0;
+}
+
+.btn button:hover {
+  transform: scale(1.15);
+  box-shadow: 2px 2px 0 #000;
 }
 
 button.redbtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    background-color: #FCCFA6;
+  background-color: #FCCFA6;
+  color: #900;
 }
 
 button.yellowbtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f7ea78;
-    font-size: 10px;
+  background-color: #f7ea78;
+  color: #705500;
 }
 
 button.greenbtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #B6FF9C;
+  background-color: #B6FF9C;
+  color: #0d4a00;
+}
+
+.textHolder {
+  display: flex;
+  flex: 1;
+  padding: 16px;
+  gap: 16px;
+  min-height: 0;
+}
+
+.editor-wrapper {
+  flex: 1;
+  display: flex;
+  background-color: #ffffff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.line-gutter {
+  width: 44px;
+  background-color: #f0ede1;
+  border-right: 1.5px solid #000;
+  padding: 14px 6px 14px 0;
+  text-align: right;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 13.5px;
+  line-height: 21px;
+  color: #888;
+  user-select: none;
+  overflow: hidden;
+}
+
+.gutter-number {
+  display: block;
+}
+
+.code-textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 14px 14px;
+  resize: none;
+  font-family: 'Consolas', 'Courier New', 'Fira Code', monospace;
+  font-size: 13.5px;
+  line-height: 21px;
+  color: #1a1a1a;
+  background-color: #fff;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+.code-textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.side-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 72px;
+  padding-top: 8px;
+}
+
+.cbtncontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+button.copybtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background-color: #000;
+  color: #fff;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 150ms ease;
+}
+
+button.copybtn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+button.copybtn.copied {
+  background-color: #B6FF9C;
+  color: #000;
+  transform: scale(1.1);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.copy-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.char-counter {
+  font-size: 10px;
+  font-weight: 700;
+  color: #666;
+  text-align: center;
+}
+
+/* Tablet Responsive */
+@media (max-width: 900px) {
+  .area {
+    width: 100%;
+    max-width: 96vw;
+  }
+
+  .innerarea {
+    height: 580px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .innerarea {
+    height: auto;
+    min-height: 460px;
+    border-radius: 10px;
+  }
+
+  .innerarea.maximized {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+  }
+
+  .window-topbar {
+    height: auto;
+    padding: 8px 10px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .window-meta {
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .slide-badge {
     font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .slide-title-input {
+    font-size: 12px;
+    padding: 3px 6px;
+    min-width: 75px;
+    max-width: 120px;
+  }
+
+  .language-select {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  .btn button {
+    height: 20px;
+    width: 20px;
+    font-size: 8px;
+  }
+
+  .textHolder {
+    padding: 10px 8px;
+    gap: 8px;
+  }
+
+  .line-gutter {
+    width: 32px;
+    font-size: 11px;
+    line-height: 18px;
+    padding: 10px 4px 10px 0;
+  }
+
+  .code-textarea {
+    padding: 10px 8px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .side-actions {
+    width: 46px;
+    gap: 10px;
+    padding-top: 4px;
+  }
+
+  button.copybtn {
+    height: 34px;
+    width: 34px;
+    font-size: 12px;
+  }
+
+  .copy-label {
+    font-size: 9px;
+  }
+
+  .char-counter {
+    font-size: 8px;
+  }
 }
 
-.textHolder{
-    display: flex;
-}
-
-.textbox{
-    
-    width: 834px;
-    height: 534px;
-    margin: 20px;
-    border: 1px solid black;
-    cursor: text;
-}
-
-
-.cbtncontainer{
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.cbtncontainer span{
-    margin: 5px;
-}
-
-button.copybtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    background-color: #000000;
-    color: white;
-    height: 36px;
-    width: 36px;
-    border-radius: 50%;
-    border: 1px solid white;
-    transition: box-shadow 200ms ease, transform 200ms ease;
-}

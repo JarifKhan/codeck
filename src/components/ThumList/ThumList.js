@@ -1,13 +1,24 @@
-import ThumDisplay from "../ThumDisplay/ThumDisplay";
+import React from 'react';
+import ThumDisplay from '../ThumDisplay/ThumDisplay';
 
-function Thumlist(props) {
+function ThumList({ pages, activePageId, onSelectPage, onDeletePage }) {
+  const canDelete = pages.length > 1;
 
-    return (
+  return (
+    <div className="thum-list-container">
+      {pages.map((page, index) => (
+        <ThumDisplay
+          key={page.id}
+          page={page}
+          index={index}
+          isActive={page.id === activePageId}
+          onSelect={() => onSelectPage(page.id)}
+          onDelete={onDeletePage}
+          canDelete={canDelete}
+        />
+      ))}
+    </div>
+  );
+}
 
-        <div>
-            {props.pages.map((page) => (<ThumDisplay key= {page.id}></ThumDisplay>))}
-        </div>
-    );
-};
-
-export default Thumlist;
+export default ThumList;
