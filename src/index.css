@@ -1,59 +1,223 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-body{
+body {
   padding: 0;
   margin: 0;
   background-color: #F3BD26;
-  background-image: linear-gradient(#000 3px, transparent 3px), linear-gradient(90deg,#000 3px, transparent 3px);
+  background-image: linear-gradient(#000 3px, transparent 3px), linear-gradient(90deg, #000 3px, transparent 3px);
   background-size: 50px 50px;
+  min-height: 100vh;
 }
 
-.wrapper{
+.wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  isolation: isolate;
+}
+
+.container {
+  width: 1240px;
+  max-width: 96vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 36px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.main-display-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
-.container{
-  width: 1280px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 100px;
 
+.tumcontainer {
+  width: 176px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 690px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 6px 12px 4px;
 }
 
-.tumcontainer{
-  width: 168px;
-  display: flex;
-  flex-direction: column-reverse;
+.tumcontainer::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.BackgroundImages{
-  position: absolute;
+.tumcontainer::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 4px;
+}
+
+.tumcontainer::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.BackgroundImages {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   z-index: -1;
+  overflow: hidden;
 }
 
-.BackgroundImages svg{
-  animation: myfirst 20s infinite linear;
+.bg-shape {
+  position: absolute;
+  opacity: 0.85;
+  pointer-events: none;
 }
 
-.yo{
-  top: -50px;
-  right: 120px;
+.bg-shape-1 {
+  top: 80px;
+  right: 60px;
+  animation: floatSpin 25s infinite linear;
 }
 
-@keyframes myfirst{
-  0%{
+.bg-shape-2 {
+  bottom: 80px;
+  left: 60px;
+  animation: floatSpinReverse 30s infinite linear;
+}
+
+.bg-shape-3 {
+  top: 45%;
+  left: 20px;
+  animation: floatSpin 20s infinite linear;
+}
+
+@keyframes floatSpin {
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes floatSpinReverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Toast notification styling */
+.toast-banner {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border: 2.5px solid #000;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 4px 4px 0 #000;
+  z-index: 2000;
+  animation: popIn 180ms ease-out;
+}
+
+.toast-success {
+  background-color: #B6FF9C;
+  color: #0d4a00;
+}
+
+.toast-error {
+  background-color: #ffcdd2;
+  color: #b71c1c;
+}
+
+.toast-info {
+  background-color: #F8F4E8;
+  color: #000;
+}
+
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 96vw;
+  }
+
+  .tumcontainer {
+    width: 100%;
+    max-width: 968px;
+    flex-direction: row;
+    align-items: center;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 6px 4px 12px 4px;
+    gap: 12px;
+  }
+
+  .thum-list-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .areatd,
+  .areatdb {
+    flex-shrink: 0;
+    width: auto !important;
+    padding: 2px 0 !important;
+  }
+
+  .innerareatd {
+    width: 130px !important;
+    height: 90px !important;
+  }
+
+  .innerareatdb {
+    width: 115px !important;
+    height: 90px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+
+  .toast-banner {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    text-align: center;
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .bg-shape {
+    display: none;
   }
 }
